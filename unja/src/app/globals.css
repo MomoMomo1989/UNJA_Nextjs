@@ -30,3 +30,6 @@ body {
   flex-direction: column;
   
 }
+.men_mob{
+  transition: width 1s ease;
+}

@@ -6,7 +6,8 @@ import "./globals.css";
 import Image from "next/image";
 import Link from 'next/link'
 import { motion } from "framer-motion"
-
+import { Parallax } from 'react-parallax'
+import bg1 from "next/image";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -31,28 +32,36 @@ export default function RootLayout({
 }>) {
 
   const [toggle, setToggle] = useState<boolean>(false);
+  const [img_men, setImg_menu] = useState("/fermer_mob.png");
   return (
     <html lang="en">
       <body>
-        <header className="w-full h-[50px] bg-[#20202057] flex justify-between  items-center">
+        <header>
+        <nav className=" w-full h-[50px] bg-[#a1969657] flex justify-between  items-center">
          <div className="h-auto w-auto ml-2">
           <Image src="/logo.png" width={46} height={38} alt="" className=""/>
          </div> 
           <Image onClick={()=>{
              setToggle(!toggle)
              
-          }} src="/Menu_Mob_.png" width={46} height={38} alt="" className="cursor-pointer md:hidden "/>
-          <motion.div
-          animate={{ y: 100 }}
-          transition={{ delay: 2 }}
-          className={` ${toggle? " flex " : " hidden " } absolute flex-col w-[130px] h-[160px] top-0 right-[calc(50%)] bg-[#080808d7] space-y-2 items-center md:hidden `}>
-          <Link  href="">ACCUEIL</Link>
-          <Link  href="">A PROPOS</Link>
-          <Link  href="">ACTIVITÉES</Link>
-          <Link  href="">GALERIE</Link>
-          <Link  href="">CONTACT</Link>
+          }} src="/Menu_Mob_.png"  width={46} height={38} alt="" className={` ${toggle? " hidden " : " visible " } absolute z-10 right-0 cursor-pointer md:hidden `}/>
+          <div
+          className={` ${toggle? " w-[180px] " : " w-0 " } men_mob absolute flex flex-col  h-[100vh] top-0 right-0 bg-[#080808d7] space-y-2 items-center md:hidden `}>
+          <h1 className={` ${toggle? " w-[70px] " : " w-0 " } men_mob mt-2 text-[25px]  `}>Menu</h1>
+          <div className="pt-8"></div>
+          <Link  className={` ${toggle? " w-[160px] " : " w-0 "} men_mob flex items-center  `} href=""><Image src="/home_m.png" width={20} height={15} alt="" className="mr-2 "/><h2 className="hover:bg-[#fff] hover:text-[#080808b7]">ACCUEIL</h2></Link>
+          <Link className={` ${toggle? " w-[160px] " : " w-0 " } men_mob flex items-center  `} href=""><Image src="/info.png"     width={20} height={15} alt="" className="mr-2 "/><h2 className="hover:bg-[#fff] hover:text-[#080808b7]">A PROPOS</h2></Link>
+          <Link className={` ${toggle? " w-[160px] " : " w-0 " } men_mob flex items-center  `} href=""><Image src="/activite.png" width={20} height={15} alt="" className="mr-2 "/><h2 className="hover:bg-[#fff] hover:text-[#080808b7]">ACTIVITÉES</h2></Link>
+          <Link className={` ${toggle? " w-[160px] " : " w-0 " } men_mob flex items-center  `} href=""><Image src="/galerie.png"  width={20} height={15} alt="" className="mr-2 "/><h2 className="hover:bg-[#fff] hover:text-[#080808b7]">GALERIE</h2></Link>
+          <Link className={` ${toggle? " w-[160px] " : " w-0 " } men_mob flex items-center  `} href=""><Image src="/contact.png"  width={20} height={15} alt="" className="mr-2 "/><h2 className="hover:bg-[#fff] hover:text-[#080808b7]">CONTACT</h2></Link>
 
-          </motion.div>
+          </div>
+          <Image onClick={()=>{
+             setToggle(!toggle)
+             
+          }} src="/fermer_mob.png" width={46} height={38} alt="" className={` ${toggle? " visible " : " hidden " } absolute z-10 right-0 cursor-pointer md:hidden `}/>
+        </nav>
+          <Parallax strength={600} bgImage={bg1} />
         </header>
         {children}
         <footer>
