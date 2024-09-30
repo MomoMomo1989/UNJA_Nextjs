@@ -7,7 +7,7 @@ import Image from "next/image";
 import Link from 'next/link'
 import { motion } from "framer-motion"
 import { Parallax } from 'react-parallax'
-import bg1 from "next/image";
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -37,16 +37,16 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <header>
-        <nav className=" w-full h-[50px] bg-[#a1969657] flex justify-between  items-center">
+        <nav className=" w-full h-[50px] md:bg-[#a1969657] flex justify-between  items-center md:z-50 ">
          <div className="h-auto w-auto ml-2">
-          <Image src="/logo.png" width={46} height={38} alt="" className=""/>
+          <Image src="/logo.png" width={46} height={38} alt="" className="absolute z-10 top-1 left-1 "/>
          </div> 
           <Image onClick={()=>{
              setToggle(!toggle)
              
           }} src="/Menu_Mob_.png"  width={46} height={38} alt="" className={` ${toggle? " hidden " : " visible " } absolute z-10 right-0 cursor-pointer md:hidden `}/>
           <div
-          className={` ${toggle? " w-[180px] " : " w-0 " } men_mob absolute flex flex-col  h-[100vh] top-0 right-0 bg-[#080808d7] space-y-2 items-center md:hidden `}>
+          className={` ${toggle? " w-[180px] " : " w-0 " } men_mob absolute flex flex-col  h-[100vh] top-0 right-0 bg-[#080808d7] space-y-2 items-center md:hidden z-20 `}>
           <h1 className={` ${toggle? " w-[70px] " : " w-0 " } men_mob mt-2 text-[25px]  `}>Menu</h1>
           <div className="pt-8"></div>
           <Link  className={` ${toggle? " w-[160px] " : " w-0 "} men_mob flex items-center  `} href=""><Image src="/home_m.png" width={20} height={15} alt="" className="mr-2 "/><h2 className="hover:bg-[#fff] hover:text-[#080808b7]">ACCUEIL</h2></Link>
@@ -59,10 +59,19 @@ export default function RootLayout({
           <Image onClick={()=>{
              setToggle(!toggle)
              
-          }} src="/fermer_mob.png" width={46} height={38} alt="" className={` ${toggle? " visible " : " hidden " } absolute z-10 right-0 cursor-pointer md:hidden `}/>
+          }} src="/fermer_mob.png" width={46} height={38} alt="" className={` ${toggle? " visible " : " hidden " } absolute z-30 right-0 cursor-pointer md:hidden `}/>
         </nav>
-          <Parallax strength={600} bgImage={bg1} />
+          <div className="">
+            <Image src={"/bg1.jpg"} width={1400} height={800} alt="" className="absolute top-0 left-0 bg-fixed bg-cover bg-no-repeat " />
+           <div className="title_1"></div>
+           <div className="title_2"></div>
+           <p></p>
+           <button type="button"></button>
+           <button type="submit"></button>
+            {/* <div className=" w-[100vw] h-[291px] bg-[#29830586] absolute top-0 left-0"></div> */}
+          </div>
         </header>
+        <div className=" h-[1400px] "></div>
         {children}
         <footer>
 
